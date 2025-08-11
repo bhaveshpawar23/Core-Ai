@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CORE-AI</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-main">
+          <img src="assets/tablogo.jpeg" alt="CORE-AI Logo" class="logo" />
+          <h2>CORE-AI</h2>
+        </div>
+        <button class="toggle-btn close-btn" id="closeSidebar" aria-label="Close sidebar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <button class="sidebar-btn" id="newChatBtn"><i class="fa-solid fa-plus"></i> New Chat</button>
+      <button class="sidebar-btn" id="voiceChatBtn"><i class="fa-solid fa-microphone"></i> Voice Conversation</button>
+
+      <div class="chat-history">
+        <h3>Chat History</h3>
+        <ul>
+          <li class="history-item">Conversation 1</li>
+          <li class="history-item">Conversation 2</li>
+          <li class="history-item">Conversation 3</li>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="main-content">
+      <button class="toggle-btn open-btn" id="openSidebar" aria-label="Open sidebar"><i class="fa-solid fa-bars"></i></button>
+
+      <header class="top-nav">
+        <div class="nav-left">
+          <span class="brand">CORE-AI</span>
+        </div>
+
+        <div class="nav-right">
+          <button class="auth-btn light"><a href="login.html" style="text-decoration: none; color: black;">Login</a></button>
+          <button class="auth-btn dark">Register</button>
+        </div>
+      </header>
+
+      <main class="content-area">
+        <!-- INTRO / HERO (visible until user starts chat) -->
+        <section id="introScreen" class="welcome-section">
+          <h1 class="welcome-title">Introducing CORE-AI.</h1>
+          <p class="welcome-subtitle">How can I help you today?</p>
+
+          <div class="input-bar intro-input">
+            <button class="input-icon-file" id="introFileBtn" title="Attach file"><i class="fa-solid fa-paperclip"></i></button>
+            <input id="introInput" type="text" placeholder="Ask anything..." />
+            <button class="input-icon-mic" id="introMicBtn" title="Voice input"><i class="fa-solid fa-microphone"></i></button>
+            <button class="send-btn" id="introSendBtn" title="Send">➤</button>
+          </div>
+
+          <div class="disclaimer">CORE-AI may produce inaccurate information. Consider verifying important details.</div>
+        </section>
+
+        <!-- CHAT SECTION (hidden initially) -->
+        <section id="chatSection" class="chat-section hidden" aria-hidden="true">
+          <div class="chat-header">
+            <div class="chat-title">Conversation</div>
+          </div>
+
+          <div id="chatContainer" class="chat-container" role="log" aria-live="polite"></div>
+
+          <div class="chat-footer">
+            <div class="input-bar chat-input">
+              <button class="input-icon-file" id="chatFileBtn" title="Attach file"><i class="fa-solid fa-paperclip"></i></button>
+              <input id="chatInput" type="text" placeholder="Type your message..." autocomplete="off" />
+              <button class="input-icon-mic" id="chatMicBtn" title="Voice input"><i class="fa-solid fa-microphone"></i></button>
+              <button class="send-btn" id="chatSendBtn" title="Send">➤</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="scripts/main.js"></script>
+</body>
+</html>

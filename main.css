@@ -1,0 +1,146 @@
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial}
+
+:root{
+  --bg1:#000;
+  --bg2:#0a0a23;
+  --sidebar-bg:#0d0d26;
+  --accent:#19a9d8;
+  --muted:#9aa9bf;
+  --panel:#0f1114;
+  --text:#e6f2fb;
+}
+
+html,body{height:100%}
+body{
+  background:linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:var(--text);
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{display:flex;height:100vh;width:100%}
+
+/* SIDEBAR */
+.sidebar{
+  position:fixed;left:0;top:0;height:100vh;width:250px;
+  background:var(--sidebar-bg);
+  border-right:1px solid rgba(25,169,216,0.07);
+  padding:24px 20px;display:flex;flex-direction:column;gap:18px;align-items:center;
+  z-index:1200;transition:transform .28s ease;
+}
+
+.sidebar.hidden{transform:translateX(-110%)}
+
+.sidebar-header{display:flex;flex-direction:column;align-items:center;position:relative;margin-top:4px}
+.logo{width:64px;height:64px;border-radius:50%;object-fit:cover;margin-bottom:10px}
+.sidebar h2{color:var(--accent);font-size:1.05rem;margin-bottom:6px;font-weight:700}
+
+.sidebar-btn{
+  width:100%;display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--accent);color:#000;border-radius:8px;border:none;cursor:pointer;font-weight:600
+}
+.sidebar-btn i{width:18px;text-align:center}
+
+.chat-history{align-self:stretch;flex:1;overflow:auto;padding-top:6px}
+.chat-history h3{font-size:.95rem;color:#bcdffb;margin-bottom:10px;margin-left:6px}
+.chat-history ul{list-style:none;padding:0;margin:0}
+.chat-history li{padding:8px 6px;border-radius:6px;color:#cfe9ff;cursor:pointer;margin-bottom:4px}
+.chat-history li:hover{background:rgba(25,169,216,0.03);color:#fff}
+
+/* sidebar small toggle buttons */
+.open-btn, .close-btn{display:none}
+.open-btn{position:fixed;top:12px;left:12px;background:transparent;color:var(--accent);border:none;padding:6px 8px;font-size:1.25rem;z-index:1300}
+.close-btn{position:absolute;top:6px;right:-22px;background:none;color:#ff4d4d;border:none;font-size:1.3rem;padding:6px;cursor:pointer;}
+
+/* MAIN */
+.main-content{flex:1;margin-left:250px;display:flex;flex-direction:column;min-height:100vh;overflow:hidden;transition:margin-left .28s ease}
+
+/* TOP NAV */
+.top-nav{display:flex;justify-content:space-between;align-items:center;padding:14px 22px;border-bottom:1px solid rgba(25,169,216,0.03)}
+.brand{color:var(--accent);font-weight:700;font-size:1.25rem}
+.nav-right{display:flex;gap:10px;align-items:center}
+.auth-btn{padding:7px 14px;border-radius:18px;border:none;cursor:pointer;font-weight:600}
+.auth-btn.light{background:var(--accent);color:#000}
+.auth-btn.dark{background:transparent;color:var(--accent);border:2px solid var(--accent)}
+
+/* CONTENT WRAPPER */
+.content-area{flex:1;display:flex;flex-direction:column;align-items:stretch;overflow:hidden;padding:20px 28px}
+
+/* INTRO HERO */
+.welcome-section{flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:10px 24px}
+.welcome-title{font-size:2.2rem;color:var(--accent);margin-bottom:6px}
+.welcome-subtitle{color:#cfdbe6;margin-bottom:18px}
+
+/* input pill style (intro) */
+.input-bar{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--accent);border-radius:999px;padding:8px 12px;box-sizing:border-box;width:min(820px,92%)}
+.input-bar input{flex:1;background:transparent;border:none;color:var(--text);outline:none;padding:10px 8px;min-width:0;font-size:1rem}
+.input-icon-file,.input-icon-mic{display:inline-flex;align-items:center;justify-content:center;border-radius:50%;border:none;padding:6px;color:var(--accent);background:transparent;cursor:pointer}
+.send-btn{background:var(--accent);color:#000;border-radius:50%;width:40px;height:40px;border:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;transition:.15s}
+.send-btn:hover{filter:brightness(.98)}
+
+/* CHAT SECTION */
+.chat-section{display:flex;flex-direction:column;height:100%;background:transparent}
+.chat-section.hidden{display:none}
+.chat-header{height:48px;border-bottom:1px solid rgba(255,255,255,0.02);display:flex;align-items:center;padding:8px 12px;background:transparent}
+.chat-title{color:var(--accent);font-weight:700}
+
+/* chat message area */
+.chat-container{flex:1;overflow:auto;padding:28px 40px;display:flex;flex-direction:column;gap:18px}
+.chat-inner{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+
+/* message bubble */
+.msg{max-width:78%;padding:12px 16px;border-radius:12px;line-height:1.4}
+.msg.bot{background:rgba(255,255,255,0.04);color:#e6f2fb;align-self:flex-start}
+.msg.user{background:var(--accent);color:#000;align-self:flex-end}
+
+/* footer input pill (chat) */
+.chat-footer{padding:18px 28px;border-top:1px solid rgba(255,255,255,0.02);background:transparent}
+.chat-input{display:flex;align-items:center;gap:10px;background:var(--panel);border:1px solid var(--accent);border-radius:999px;padding:8px 12px;max-width:1200px;margin:0 auto;width:92%}
+.chat-input input{flex:1;border:none;background:transparent;color:var(--text);outline:none;padding:10px 8px;font-size:1rem;min-width:0}
+.chat-input .input-icon-file,.chat-input .input-icon-mic{padding:6px}
+
+/* file preview bubble (small) */
+.file-preview{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:8px;background:rgba(255,255,255,0.03);color:#cfe9ff;font-size:.95rem}
+
+/* RESPONSIVE */
+@media (max-width:1024px){
+  .sidebar{width:220px}
+  .main-content{margin-left:220px}
+  .input-bar{width:min(700px,92%)}
+  .welcome-title{font-size:1.9rem}
+}
+
+@media (max-width:768px){
+  .open-btn{display:inline-flex}
+  .sidebar{transform:translateX(-110%);position:fixed;left:0;top:0}
+  .sidebar.active{transform:translateX(0)}
+  .close-btn{display:block}
+  .main-content{margin-left:0}
+  .content-area{padding:12px}
+  .chat-container{padding:18px}
+}
+
+@media (max-width:540px){
+  .welcome-title{font-size:1.6rem}
+  .input-bar{width:94%}
+  .send-btn{width:36px;height:36px}
+  .chat-input{width:96%}
+}
+
+@media (max-width:425px){
+  .welcome-title{font-size:1.35rem}
+  .input-bar{width:96%;padding:6px}
+  .chat-input{padding:6px}
+  .chat-container{padding:12px}
+}
+
+@media (max-width:375px){
+  .welcome-title{font-size:1.2rem}
+  .chat-input{flex-direction:row}
+}
+
+@media (max-width:320px){
+  .sidebar{width:200px;padding:16px}
+  .sidebar h2{font-size:1rem}
+  .chat-input input{font-size:.9rem}
+}
